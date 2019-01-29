@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "8"
+stages:
+  - name: test
+  - name: build
+jobs:
+  include:
+    # Run tests with coverage
+    - stage: test
+      script: npm run test -- --coverage
+
+    # Build the module
+    - stage: build
+      script: npm run build
+notifications:
+  email:
+    on_success: never
+    on_failure: change

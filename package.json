@@ -14,6 +14,7 @@
     "lint": "kcd-scripts lint",
     "test": "kcd-scripts test",
     "test:update": "kcd-scripts test --updateSnapshot",
+    "pretest": "npm run lint",
     "validate": "kcd-scripts validate",
     "prepublish": "npm run build",
     "watch": "watch 'npm run build' src",
