@@ -1,6 +1,6 @@
-# Manikin Model
-
 [![Build Status](https://travis-ci.com/zillow/manikin-model.svg?branch=master)](https://travis-ci.com/zillow/manikin-model)
+
+# Manikin Model
 
 Manikin provides a basis for defining models/schema for JavaScript concepts.
 
