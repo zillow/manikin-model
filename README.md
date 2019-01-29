@@ -8,7 +8,7 @@ Manikin provides a basis for defining models/schema for JavaScript concepts.
 
 ## Installation
 
-`npm install manikin-model --save`;
+`npm install manikin-model --save`
 
 ## Overview
 
