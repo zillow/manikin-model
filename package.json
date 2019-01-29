@@ -17,8 +17,12 @@
     "pretest": "npm run lint",
     "validate": "kcd-scripts validate",
     "prepublish": "npm run build",
-    "watch": "watch 'npm run build' src",
-    "precommit": "lint-staged"
+    "watch": "watch 'npm run build' src"
+  },
+  "husky": {
+    "hooks": {
+      "precommit": "lint-staged"
+    }
   },
   "repository": {
     "type": "git",
