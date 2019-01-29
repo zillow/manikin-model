@@ -17,7 +17,10 @@
     "pretest": "npm run lint",
     "validate": "kcd-scripts validate",
     "prepublish": "npm run build",
-    "watch": "watch 'npm run build' src"
+    "watch": "watch 'npm run build' src",
+    "release:major": "changelog -M && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version major && git push origin && git push origin --tags",
+    "release:minor": "changelog -m && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version minor && git push origin && git push origin --tags",
+    "release:patch": "changelog -p && git add CHANGELOG.md && git commit -m 'updated CHANGELOG.md' && npm version patch && git push origin && git push origin --tags"
   },
   "husky": {
     "hooks": {
@@ -32,8 +35,8 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@babel/runtime": "^7.3.1",
-    "check-prop-types": "^1.1.2",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "wattyrev-check-prop-types": "^1.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -43,6 +46,7 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-jest": "^21.17.0",
     "eslint-plugin-zillow": "^1.0.0-beta.3",
+    "generate-changelog": "^1.7.1",
     "husky": "^0.14.3",
     "jest": "^23.4.1",
     "kcd-scripts": "^0.49.0",
