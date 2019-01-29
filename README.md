@@ -69,14 +69,6 @@ microsoft = microsoft.setProperties({
 console.log(microsoft.getProperties("companyName", "url")); // { companyName: 'Google', url: 'http://google.com'}
 ```
 
-# Development
-
-This package uses [Asphalt](https://bitbucket.zgtools.net/projects/NPM/repos/asphalt/browse) for publishing. When completing a Pull Request into master, update the commit message based on the type of change:
-
-- Breaking changes - Include "BREAKING CHANGE:" in your commit message to increment a major version.
-- New features - Include feat(feature name): in your commit message to increment a minor version
-- All other changes will increment a patch version
-
 ## Testing
 
 This project uses Jest for testing. Relevant tests will be run on precommit, and all tests will be run on Jenkins once your changes are pushed.
