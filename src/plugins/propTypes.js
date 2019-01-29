@@ -1,4 +1,4 @@
-import { assertPropTypes } from 'check-prop-types';
+import { assertPropTypes } from 'wattyrev-check-prop-types';
 import ComputedProperty from '../classes/ComputedProperty';
 
 /**
