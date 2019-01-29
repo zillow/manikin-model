@@ -1,0 +1,14 @@
+{
+  "extends": "./node_modules/kcd-scripts/eslint.js",
+  "rules": {
+    "no-underscore-dangle": "off",
+    "no-param-reassign": "off",
+    "class-methods-use-this": "off",
+    "max-lines-per-function": "off",
+    "prefer-object-spread": "off",
+    "no-useless-catch": "off",
+    "jest/prefer-to-contain": "off",
+    "import/namespace": "off",
+    "babel/no-invalid-this": "off"
+  }
+}

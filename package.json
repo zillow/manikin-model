@@ -1,0 +1,49 @@
+{
+  "name": "manikin-model",
+  "version": "1.0.0",
+  "description": "A JS library for defining clear, reliable, flexible, and enforceable data models.",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/manikin-model.cjs.js",
+  "module": "dist/manikin-model.esm.js",
+  "scripts": {
+    "prepare": "npm run build",
+    "build": "kcd-scripts build --bundle",
+    "format": "kcd-scripts format",
+    "lint": "kcd-scripts lint",
+    "test": "kcd-scripts test",
+    "test:update": "kcd-scripts test --updateSnapshot",
+    "validate": "kcd-scripts validate",
+    "prepublish": "npm run build",
+    "watch": "watch 'npm run build' src",
+    "precommit": "lint-staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@bitbucket.zgtools.net/npm/manikin.git"
+  },
+  "author": "Spencer Watson <spencerwa@zillowgroup.com>",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@babel/runtime": "^7.3.1",
+    "check-prop-types": "^1.1.2",
+    "prop-types": "^15.6.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-jest": "^20.0.3",
+    "babel-preset-latest": "^6.22.0",
+    "eslint": "^4.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jest": "^21.17.0",
+    "eslint-plugin-zillow": "^1.0.0-beta.3",
+    "husky": "^0.14.3",
+    "jest": "^23.4.1",
+    "kcd-scripts": "^0.49.0",
+    "lint-staged": "^7.2.0",
+    "prettier": "^1.12.1",
+    "rollup": "^1.1.2",
+    "watch": "^1.0.2"
+  }
+}
