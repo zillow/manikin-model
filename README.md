@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/zillow/manikin-model.svg?branch=master)](https://travis-ci.com/zillow/manikin-model)
+[![NPM Version](https://img.shields.io/npm/v/manikin-model.svg)](https://www.npmjs.com/package/manikin-model)
 
 # Manikin Model
 
