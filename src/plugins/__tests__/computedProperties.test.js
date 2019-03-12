@@ -38,7 +38,7 @@ describe('get', () => {
     expect(myInstance.get('fullName')).toEqual('Frank McTom');
   });
 
-  it('should accept the parameter for the getter', () => {
+  it('should receive additional parameters for the getter', () => {
     const MyModel = createModel('MyModel', {
       firstName: '',
       lastName: '',
@@ -109,7 +109,7 @@ describe('set', () => {
     expect(myInstance.get('lastName')).toEqual('Wayne');
   });
 
-  it('should accept the 2nd parameter for the setter', () => {
+  it('should receive additional parameters for the setter', () => {
     const MyModel = createModel('MyModel', {
       firstName: '',
       lastName: '',
