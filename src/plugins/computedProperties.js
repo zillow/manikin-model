@@ -18,7 +18,7 @@ const computedPropertiesPlugin = function computedPropertiesPlugin(
 
       // If the user is getting a computed property, return the computed value
       if (value instanceof ComputedProperty) {
-        return value.compute.bind(this)();
+        return value.compute.bind(this)(...rest);
       }
 
       // Return the regular value for non-computed properties
@@ -46,7 +46,7 @@ const computedPropertiesPlugin = function computedPropertiesPlugin(
         }
 
         // Run the setter
-        return originalValue.handleSet.bind(this)(value);
+        return originalValue.handleSet.bind(this)(value, ...rest);
       }
 
       // If the value is not a computed property or has not yet been set, set the value as
