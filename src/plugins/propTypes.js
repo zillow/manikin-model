@@ -23,6 +23,15 @@ import ComputedProperty from '../classes/ComputedProperty';
  */
 const propTypesPlugin = function propTypesPlugin(ParentClass) {
   return class PropTypesClass extends ParentClass {
+    constructor(...rest) {
+      super(...rest);
+
+      // Because the constructor first sets defaults, then sets the initial values, propType set
+      // checks are disabled while the constructor is running. To validate propTypes after
+      // instantiation, fetch every property to trigger the get checks.
+      this.getProperties(...Object.keys(this.__getDefaults()));
+    }
+
     /**
      * Evaluate the given property and value to determine if it validates prop types.
      * @param  {String} propertyName The name of the property to check
@@ -66,7 +75,11 @@ const propTypesPlugin = function propTypesPlugin(ParentClass) {
       // Allow computed properties to be set regardless of proptypes. The get check will catch
       // any invalid values in computed properties. This allows Manikin to _set computed
       // properties during instantiation.
-      if (!(value instanceof ComputedProperty)) {
+      //
+      // Don't evaluate during object construction. This is because the default values get set first
+      // followed by the initial values, and an invalid default value may get overridden by an
+      // initial value, so throwing on the default value would be unwarrented.
+      if (!(value instanceof ComputedProperty) && this.__constructed) {
         this._evaluatePropTypes(propertyName, value);
       }
 
