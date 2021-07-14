@@ -5,6 +5,7 @@
   "files": [
     "dist"
   ],
+  "publishConfig": "https://registry.npmjs.org",
   "main": "dist/manikin-model.cjs.js",
   "module": "dist/manikin-model.esm.js",
   "scripts": {
