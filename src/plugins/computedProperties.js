@@ -25,18 +25,18 @@ const computedPropertiesPlugin = function computedPropertiesPlugin(
       return value;
     }
 
-    // Extend Manikin's set method so that it will evaluate computed setters or notify about
-    // setting readonly computed properties
-    set(propertyName, value, ...rest) {
+    // Extend Manikin's private _set method so that it will evaluate computed setters or notify
+    // about setting readonly computed properties
+    _set(propertyName, value, instance = this, ...rest) {
       // Get the property from the default values instead of using get, because we just need
       // to check the type, and the stored value may not be set yet.
-      const originalValue = this.__getDefaults()[propertyName];
+      const originalValue = instance.__getDefaults()[propertyName];
 
       // If the property is a computed property, and it has been set, then continue
       // with the computed property logic
       if (
         originalValue instanceof ComputedProperty &&
-        this[`__${propertyName}`]
+        instance[`__${propertyName}`]
       ) {
         // Throw an error if the computed property doesn't have a setter
         if (!originalValue.handleSet) {
@@ -46,17 +46,17 @@ const computedPropertiesPlugin = function computedPropertiesPlugin(
         }
 
         // Run the setter
-        return originalValue.handleSet.bind(this)(value, ...rest);
+        return originalValue.handleSet.bind(instance)(value, ...rest);
       }
 
       // If the value is not a computed property or has not yet been set, set the value as
       // usual. This is done to account for `set` being called for each property within
       // the ManikinObject constructor
-      return super.set(propertyName, value, ...rest);
+      return super._set(propertyName, value, instance, ...rest);
     }
 
-    // Extend Manikin's _set method so that it will evaluate computed setters or notify about
-    // setting readonly computed properties when setProperties is used
+    // Extend Manikin's setProperties method so that it will evaluate computed setters or notify
+    // about setting readonly computed properties when setProperties is used
     setProperties(values, ...rest) {
       const defaults = this.__getDefaults();
 

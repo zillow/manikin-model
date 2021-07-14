@@ -221,5 +221,31 @@ describe('set', () => {
         })
       ).toThrow();
     });
+    it('computes computed properties when the object is instantiated', () => {
+      expect.assertions(3);
+      const MyModel = createModel('MyModel', {
+        firstName: '',
+        lastName: '',
+        foo: 'bar',
+        fullName: computed({
+          get() {
+            return `${this.get('firstName')} ${this.get('lastName')}`;
+          },
+          set(value) {
+            const names = value.split(' ');
+            return this.setProperties({
+              firstName: `${names[0]}`,
+              lastName: `${names[1]}`
+            });
+          }
+        })
+      });
+      const myInstance = new MyModel({
+        fullName: 'Lil Wayne'
+      });
+      expect(myInstance.get('firstName')).toEqual('Lil');
+      expect(myInstance.get('lastName')).toEqual('Wayne');
+      expect(myInstance.get('fullName')).toEqual('Lil Wayne');
+    });
   });
 });
